@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ГОЛОС — Курс Впевненого Мовлення</title>
+  <meta name="description" content="Навчись говорити так, щоб тебе слухали. Авторський курс сценічної мови від театрального педагога.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0A0A0A;
+      --dark: #111111;
+      --card: #1A1A1A;
+      --gold: #C9A84C;
+      --gold-light: #E8C97A;
+      --white: #F5F5F0;
+      --muted: #888;
+      --red: #C0392B;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 40px;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px; font-weight: 800;
+      color: var(--gold);
+      letter-spacing: 4px;
+    }
+    .nav-cta {
+      background: var(--gold);
+      color: var(--black);
+      padding: 10px 24px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      transition: background 0.2s;
+      letter-spacing: 0.5px;
+    }
+    .nav-cta:hover { background: var(--gold-light); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(201,168,76,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(201,168,76,0.12);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 100px;
+      padding: 8px 18px;
+      font-size: 13px; font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+    .hero-badge span { font-size: 16px; }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(56px, 12vw, 120px);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -2px;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .hero h1 .gold { color: var(--gold); }
+    .hero-sub {
+      font-size: clamp(18px, 3vw, 24px);
+      color: var(--muted);
+      font-weight: 300;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+    .hero-desc {
+      max-width: 560px;
+      font-size: 18px;
+      color: #AAA;
+      line-height: 1.7;
+      margin-bottom: 48px;
+    }
+    .hero-desc strong { color: var(--white); }
+    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--black);
+      padding: 18px 40px;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: 16px;
+      text-decoration: none;
+      transition: all 0.2s;
+      letter-spacing: 0.5px;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,168,76,0.3); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      padding: 18px 40px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 16px;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+    .hero-stats {
+      display: flex; gap: 48px; flex-wrap: wrap; justify-content: center;
+      margin-top: 72px;
+      padding-top: 48px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      width: 100%; max-width: 600px;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px; font-weight: 800;
+      color: var(--gold);
+    }
+    .stat-label { font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+    /* PAIN SECTION */
+    .section { padding: 100px 24px; max-width: 1100px; margin: 0 auto; }
+    .section-center { text-align: center; }
+    .tag {
+      display: inline-block;
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.25);
+      color: var(--gold);
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding: 6px 16px; border-radius: 100px;
+      margin-bottom: 24px;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 800; line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .pain-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px; margin-top: 60px;
+    }
+    .pain-card {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .pain-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .pain-card:hover::before { opacity: 1; }
+    .pain-icon { font-size: 32px; margin-bottom: 16px; }
+    .pain-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+    .pain-card p { font-size: 15px; color: var(--muted); line-height: 1.6; }
+
+    /* AUTHOR */
+    .author-section {
+      background: var(--dark);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 100px 24px;
+    }
+    .author-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .author-img-wrap {
+      position: relative;
+    }
+    .author-placeholder {
+      width: 100%; aspect-ratio: 3/4;
+      background: linear-gradient(135deg, #1A1A1A 0%, #222 100%);
+      border-radius: 20px;
+      border: 1px solid rgba(201,168,76,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 80px;
+    }
+    .author-badge-float {
+      position: absolute; bottom: -20px; right: -20px;
+      background: var(--gold);
+      color: var(--black);
+      border-radius: 12px;
+      padding: 16px 24px;
+      font-weight: 800;
+      font-size: 14px;
+      line-height: 1.4;
+      box-shadow: 0 8px 32px rgba(201,168,76,0.3);
+    }
+    .author-text .tag { margin-bottom: 20px; }
+    .author-text h2 { margin-bottom: 24px; }
+    .author-text p { color: #AAA; font-size: 17px; line-height: 1.8; margin-bottom: 16px; }
+    .author-facts { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
+    .author-fact {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 15px; color: var(--white);
+    }
+    .author-fact-icon { color: var(--gold); font-size: 18px; flex-shrink: 0; }
+
+    /* PROGRAM */
+    .program-grid {
+      display: grid; gap: 12px; margin-top: 60px;
+    }
+    .module {
+      display: flex; align-items: center; gap: 24px;
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 24px 28px;
+      transition: all 0.2s;
+      cursor: default;
+    }
+    .module:hover {
+      border-color: rgba(201,168,76,0.3);
+      transform: translateX(4px);
+    }
+    .module-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px; font-weight: 800;
+      color: rgba(201,168,76,0.3);
+      min-width: 48px;
+    }
+    .module-info { flex: 1; }
+    .module-info h3 { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+    .module-info p { font-size: 14px; color: var(--muted); }
+    .module-highlight { border-color: rgba(201,168,76,0.25) !important; }
+    .module-highlight .module-num { color: var(--gold); }
+    .module-badge {
+      background: rgba(201,168,76,0.15);
+      color: var(--gold);
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 100px;
+    }
+
+    /* PRICING */
+    .pricing-section { padding: 100px 24px; }
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px; margin-top: 60px; max-width: 1000px; margin-left: auto; margin-right: auto;
+    }
+    .price-card {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 40px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+    .price-card:hover { transform: translateY(-4px); }
+    .price-card.featured {
+      border-color: var(--gold);
+      background: linear-gradient(135deg, #1A1A1A 0%, #1E1A0F 100%);
+    }
+    .featured-badge {
+      position: absolute; top: 20px; right: 20px;
+      background: var(--gold);
+      color: var(--black);
+      font-size: 11px; font-weight: 800;
+      letter-spacing: 1px; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 100px;
+    }
+    .price-tier { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+    .price-card.featured .price-tier { color: var(--gold); }
+    .price-main { margin-bottom: 8px; }
+    .price-amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 52px; font-weight: 800;
+      color: var(--white); line-height: 1;
+    }
+    .price-currency { font-size: 22px; vertical-align: super; font-weight: 400; }
+    .price-period { color: var(--muted); font-size: 14px; margin-left: 4px; }
+    .price-old { font-size: 16px; color: var(--muted); text-decoration: line-through; margin-bottom: 8px; }
+    .price-save {
+      display: inline-block;
+      background: rgba(192,57,43,0.15);
+      color: #E74C3C;
+      font-size: 12px; font-weight: 700;
+      padding: 3px 10px; border-radius: 100px;
+      margin-bottom: 24px;
+    }
+    .price-divider { height: 1px; background: rgba(255,255,255,0.08); margin: 24px 0; }
+    .price-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+    .price-features li { display: flex; gap: 10px; font-size: 15px; color: #CCC; align-items: flex-start; }
+    .check { color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+    .btn-buy {
+      display: block; width: 100%; text-align: center;
+      background: rgba(201,168,76,0.15);
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 16px;
+      border-radius: 10px;
+      font-weight: 700; font-size: 16px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-buy:hover { background: var(--gold); color: var(--black); }
+    .btn-buy.primary { background: var(--gold); color: var(--black); }
+    .btn-buy.primary:hover { background: var(--gold-light); }
+    .price-timer {
+      text-align: center; margin-top: 40px;
+      font-size: 15px; color: var(--muted);
+    }
+    .price-timer strong { color: var(--gold); }
+
+    /* GUARANTEE */
+    .guarantee {
+      background: var(--dark);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 80px 24px; text-align: center;
+    }
+    .guarantee-inner { max-width: 600px; margin: 0 auto; }
+    .guarantee-icon { font-size: 64px; margin-bottom: 24px; }
+    .guarantee h2 { font-size: clamp(24px, 4vw, 36px); margin-bottom: 16px; }
+    .guarantee p { color: var(--muted); font-size: 17px; line-height: 1.7; }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 12px; margin-top: 60px; max-width: 720px; margin-left: auto; margin-right: auto; }
+    details {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    summary {
+      padding: 24px 28px;
+      font-size: 17px; font-weight: 600;
+      cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      list-style: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: '+'; color: var(--gold); font-size: 22px; font-weight: 300; }
+    details[open] summary::after { content: '−'; }
+    .faq-body { padding: 0 28px 24px; color: var(--muted); font-size: 15px; line-height: 1.7; }
+
+    /* FINAL CTA */
+    .final-cta {
+      padding: 120px 24px;
+      text-align: center;
+      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(201,168,76,0.07) 0%, transparent 70%);
+    }
+    .final-cta h2 { font-size: clamp(36px, 6vw, 64px); margin-bottom: 20px; }
+    .final-cta p { color: var(--muted); font-size: 18px; max-width: 500px; margin: 0 auto 48px; line-height: 1.7; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 40px 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    footer .logo { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 800; color: var(--gold); letter-spacing: 4px; margin-bottom: 12px; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .author-inner { grid-template-columns: 1fr; gap: 48px; }
+      .author-badge-float { right: 0; bottom: -16px; }
+      .hero-stats { gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">ГОЛОС</div>
+    <a href="#pricing" class="nav-cta">Записатись →</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge"><span>🎤</span> Авторський курс сценічної мови</div>
+    <h1>ГО<span class="gold">ЛОС</span></h1>
+    <p class="hero-sub">Говори так, щоб тебе слухали</p>
+    <p class="hero-desc">
+      Театральна методика для тих, хто хоче говорити <strong>впевнено, виразно і переконливо</strong> — в будь-якій ситуації.
+    </p>
+    <div class="hero-buttons">
+      <a href="#pricing" class="btn-primary">Почати зараз — від 990 грн</a>
+      <a href="#program" class="btn-secondary">Програма курсу</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">8</div>
+        <div class="stat-label">Модулів</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">20+</div>
+        <div class="stat-label">Практичних вправ</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Довічний доступ</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAIN -->
+  <section class="section section-center">
+    <span class="tag">Ти впізнаєш себе?</span>
+    <h2>Коли голос підводить<br>у найважливіший момент</h2>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-icon">😰</div>
+        <h3>Тремтить голос на презентації</h3>
+        <p>Ідеї є, слова є — але варто вийти до аудиторії, і голос сідає. Все що готував — зникає.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">🤐</div>
+        <h3>Страшно говорити першим</h3>
+        <p>На нараді, тості, знайомстві — мовчиш, хоча маєш що сказати. Потім шкодуєш.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">😶</div>
+        <h3>Слова є, але сила — ні</h3>
+        <p>Говориш правильно, але тебе не чують. Інші кажуть те саме — і всі слухають.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">📹</div>
+        <h3>Ненавидиш себе на відео</h3>
+        <p>Уникаєш камери, рілсів, подкастів. Бо на записі це "не ти" — скутий, неприродний.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUTHOR -->
+  <div class="author-section">
+    <div class="author-inner">
+      <div class="author-img-wrap">
+        <div class="author-placeholder">🎭</div>
+        <div class="author-badge-float">
+          Театральний<br>педагог<br>30+ років
+        </div>
+      </div>
+      <div class="author-text">
+        <span class="tag">Ваш викладач</span>
+        <h2>Методика зі сцени — у ваше щоденне життя</h2>
+        <p>Я — викладач сценічного мовлення з театральною освітою і 30-річним досвідом роботи зі студентами, акторами та публічними людьми.</p>
+        <p>На відміну від бізнес-тренерів, я вчу голосом театру — де кожне слово має вагу, кожна пауза — сенс, а тіло і голос працюють як єдине ціле.</p>
+        <div class="author-facts">
+          <div class="author-fact">
+            <span class="author-fact-icon">✦</span>
+            <span>Театральна освіта і 30+ років педагогічного досвіду</span>
+          </div>
+          <div class="author-fact">
+            <span class="author-fact-icon">✦</span>
+            <span>Авторська методика роботи з голосом і диханням</span>
+          </div>
+          <div class="author-fact">
+            <span class="author-fact-icon">✦</span>
+            <span>Сотні учнів, які змінили своє мовлення назавжди</span>
+          </div>
+          <div class="author-fact">
+            <span class="author-fact-icon">✦</span>
+            <span>Єдиний підхід в Україні на основі сценічної мови</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROGRAM -->
+  <section class="section" id="program">
+    <div class="section-center">
+      <span class="tag">Програма</span>
+      <h2>8 модулів. Від страху до<br>впевненого голосу.</h2>
+    </div>
+    <div class="program-grid">
+      <div class="module">
+        <span class="module-num">01</span>
+        <div class="module-info">
+          <h3>Психологія виступу</h3>
+          <p>Перетворюємо страх на ресурс. Звідки береться тремтіння і як його зупинити.</p>
+        </div>
+      </div>
+      <div class="module">
+        <span class="module-num">02</span>
+        <div class="module-info">
+          <h3>Тіло і сцена</h3>
+          <p>Постава, жести, простір. Як тіло підсилює або руйнує твої слова.</p>
+        </div>
+      </div>
+      <div class="module module-highlight">
+        <span class="module-num">03</span>
+        <div class="module-info">
+          <h3>Голос і дихання ⭐</h3>
+          <p>Серце методики. Резонанс, опора, тембр — техніки з театральної школи.</p>
+        </div>
+        <span class="module-badge">Ключовий</span>
+      </div>
+      <div class="module">
+        <span class="module-num">04</span>
+        <div class="module-info">
+          <h3>Структура виступу</h3>
+          <p>Як будувати мову так, щоб її запам'ятали. Три прийоми сильного спікера.</p>
+        </div>
+      </div>
+      <div class="module">
+        <span class="module-num">05</span>
+        <div class="module-info">
+          <h3>Контакт з аудиторією</h3>
+          <p>Погляд, пауза, темп. Як читати зал і тримати увагу до останнього слова.</p>
+        </div>
+      </div>
+      <div class="module">
+        <span class="module-num">06</span>
+        <div class="module-info">
+          <h3>Підготовка і репетиція</h3>
+          <p>Система підготовки за 30 хвилин. Як практикуватись без залу і мікрофона.</p>
+        </div>
+      </div>
+      <div class="module">
+        <span class="module-num">07</span>
+        <div class="module-info">
+          <h3>Різні формати</h3>
+          <p>Презентація, відео для соцмереж, тост, знайомство, ділова зустріч.</p>
+        </div>
+      </div>
+      <div class="module">
+        <span class="module-num">08</span>
+        <div class="module-info">
+          <h3>Зростання і практика</h3>
+          <p>Як продовжити розвиток після курсу. Вправи на кожен день — 10 хвилин.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing-section" id="pricing">
+    <div class="section-center">
+      <span class="tag">Вартість</span>
+      <h2>Обери свій формат</h2>
+      <p style="color:var(--muted); margin-top: 12px; font-size: 16px;">⚡ Early bird ціни — лише до кінця місяця</p>
+    </div>
+    <div class="pricing-grid">
+
+      <!-- BASIC -->
+      <div class="price-card">
+        <div class="price-tier">Basic</div>
+        <div class="price-main">
+          <span class="price-amount"><span class="price-currency">₴</span>990</span>
+        </div>
+        <div class="price-old">₴ 1 400</div>
+        <span class="price-save">-30% Early Bird</span>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li><span class="check">✦</span> 8 відео-модулів в запису</li>
+          <li><span class="check">✦</span> PDF-конспекти до кожного модуля</li>
+          <li><span class="check">✦</span> 20+ практичних вправ</li>
+          <li><span class="check">✦</span> Довічний доступ до матеріалів</li>
+        </ul>
+        <a href="#" class="btn-buy">Придбати Basic →</a>
+      </div>
+
+      <!-- PRO -->
+      <div class="price-card featured">
+        <span class="featured-badge">Популярний</span>
+        <div class="price-tier">Pro</div>
+        <div class="price-main">
+          <span class="price-amount"><span class="price-currency">₴</span>2 240</span>
+        </div>
+        <div class="price-old">₴ 3 200</div>
+        <span class="price-save">-30% Early Bird</span>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li><span class="check">✦</span> Все з Basic</li>
+          <li><span class="check">✦</span> Закритий Telegram-чат з куратором</li>
+          <li><span class="check">✦</span> Перевірка домашнього відео</li>
+          <li><span class="check">✦</span> Зворотний зв'язок від автора</li>
+          <li><span class="check">✦</span> Доступ до нових матеріалів</li>
+        </ul>
+        <a href="#" class="btn-buy primary">Придбати Pro →</a>
+      </div>
+
+      <!-- VIP -->
+      <div class="price-card">
+        <div class="price-tier">VIP</div>
+        <div class="price-main">
+          <span class="price-amount"><span class="price-currency">₴</span>5 040</span>
+        </div>
+        <div class="price-old">₴ 7 200</div>
+        <span class="price-save">-30% Early Bird</span>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li><span class="check">✦</span> Все з Pro</li>
+          <li><span class="check">✦</span> 2 особисті дзвінки з автором (60 хв)</li>
+          <li><span class="check">✦</span> Персональний план розвитку</li>
+          <li><span class="check">✦</span> Розбір вашого конкретного кейсу</li>
+          <li><span class="check">✦</span> Пріоритетна підтримка</li>
+        </ul>
+        <a href="#" class="btn-buy">Придбати VIP →</a>
+      </div>
+
+    </div>
+    <p class="price-timer">🔥 Early bird завершується <strong>28 лютого 2025</strong> — після ціни повернуться до стандартних</p>
+  </section>
+
+  <!-- GUARANTEE -->
+  <div class="guarantee">
+    <div class="guarantee-inner">
+      <div class="guarantee-icon">🛡️</div>
+      <h2>7 днів — або повернемо гроші</h2>
+      <p>Якщо протягом 7 днів після покупки ти відчуєш, що курс не для тебе — повернемо повну суму без запитань. Жодного ризику з твого боку.</p>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <section class="section section-center">
+    <span class="tag">Питання</span>
+    <h2>Часто запитують</h2>
+    <div class="faq-list">
+      <details>
+        <summary>Для кого цей курс?</summary>
+        <div class="faq-body">Для всіх, хто хоче говорити впевніше — менеджерів, підприємців, студентів, вчителів. Не потрібно жодного досвіду виступів чи акторської освіти.</div>
+      </details>
+      <details>
+        <summary>Скільки часу потрібно на день?</summary>
+        <div class="faq-body">Від 20 до 40 хвилин на день. Курс побудований так, щоб прогрес був відчутним вже після першого тижня практики.</div>
+      </details>
+      <details>
+        <summary>Чим це відрізняється від інших курсів?</summary>
+        <div class="faq-body">Методика побудована на театральній школі сценічного мовлення — а не на бізнес-тренінгах. Ви працюєте з голосом, диханням і тілом так, як це роблять актори. Це дає глибший і довготривалий результат.</div>
+      </details>
+      <details>
+        <summary>Коли я отримаю доступ?</summary>
+        <div class="faq-body">Одразу після оплати. Посилання та інструкції надходять на вашу пошту протягом декількох хвилин.</div>
+      </details>
+      <details>
+        <summary>Якщо курс не підійде — можна повернути гроші?</summary>
+        <div class="faq-body">Так. Протягом 7 днів після покупки — повне повернення без запитань. Просто напишіть нам.</div>
+      </details>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <span class="tag">Починай сьогодні</span>
+    <h2>Твій голос —<br><span style="color:var(--gold)">твоя суперсила</span></h2>
+    <p>Тисячі людей говорять тихо не тому, що їм нема чого сказати. А тому що їх ніхто не навчив говорити голосно.</p>
+    <a href="#pricing" class="btn-primary" style="font-size:18px; padding: 20px 52px;">Записатись на курс →</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="logo">ГОЛОС</div>
+    <p>© 2025 Курс сценічного мовлення «ГОЛОС»</p>
+    <p style="margin-top: 8px;">Маєте питання? <a href="mailto:hello@golos.com.ua" style="color:var(--gold)">hello@golos.com.ua</a></p>
+  </footer>
+
+</body>
+</html>
