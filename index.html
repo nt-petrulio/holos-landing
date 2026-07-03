@@ -599,7 +599,7 @@
           <li><span class="check">✦</span> 20+ практичних вправ</li>
           <li><span class="check">✦</span> Довічний доступ до матеріалів</li>
         </ul>
-        <a href="#" class="btn-buy">Придбати Basic →</a>
+        <a href="mailto:hello@golos.com.ua?subject=ГОЛОС%20Basic&body=Хочу%20придбати%20пакет%20Basic.%20Надішліть%20деталі%20для%20оплати." class="btn-buy" data-buy="basic">Придбати Basic →</a>
       </div>
 
       <!-- PRO -->
@@ -619,7 +619,7 @@
           <li><span class="check">✦</span> Зворотний зв'язок від автора</li>
           <li><span class="check">✦</span> Доступ до нових матеріалів</li>
         </ul>
-        <a href="#" class="btn-buy primary">Придбати Pro →</a>
+        <a href="mailto:hello@golos.com.ua?subject=ГОЛОС%20Pro&body=Хочу%20придбати%20пакет%20Pro.%20Надішліть%20деталі%20для%20оплати." class="btn-buy primary" data-buy="pro">Придбати Pro →</a>
       </div>
 
       <!-- VIP -->
@@ -638,11 +638,11 @@
           <li><span class="check">✦</span> Розбір вашого конкретного кейсу</li>
           <li><span class="check">✦</span> Пріоритетна підтримка</li>
         </ul>
-        <a href="#" class="btn-buy">Придбати VIP →</a>
+        <a href="mailto:hello@golos.com.ua?subject=ГОЛОС%20VIP&body=Хочу%20придбати%20пакет%20VIP.%20Надішліть%20деталі%20для%20оплати." class="btn-buy" data-buy="vip">Придбати VIP →</a>
       </div>
 
     </div>
-    <p class="price-timer">🔥 Early bird завершується <strong>28 лютого 2025</strong> — після ціни повернуться до стандартних</p>
+    <p class="price-timer">🔥 Early bird діє для <strong>перших 20 учнів</strong> — після цього ціни повернуться до стандартних</p>
   </section>
 
   <!-- GUARANTEE -->
@@ -696,6 +696,24 @@
     <p>© 2025 Курс сценічного мовлення «ГОЛОС»</p>
     <p style="margin-top: 8px;">Маєте питання? <a href="mailto:hello@golos.com.ua" style="color:var(--gold)">hello@golos.com.ua</a></p>
   </footer>
+
+  <script>
+    const PAYMENT_LINKS = {
+      basic: '',
+      pro: '',
+      vip: '',
+    };
+
+    document.querySelectorAll('[data-buy]').forEach((button) => {
+      const plan = button.getAttribute('data-buy');
+      const paymentUrl = PAYMENT_LINKS[plan];
+      if (paymentUrl) {
+        button.href = paymentUrl;
+        button.target = '_blank';
+        button.rel = 'noopener';
+      }
+    });
+  </script>
 
 </body>
 </html>
