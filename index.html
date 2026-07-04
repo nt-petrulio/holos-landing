@@ -698,21 +698,37 @@
   </footer>
 
   <script>
-    const PAYMENT_LINKS = {
+    const DEFAULT_PAYMENT_LINKS = {
       basic: '',
       pro: '',
       vip: '',
     };
 
-    document.querySelectorAll('[data-buy]').forEach((button) => {
-      const plan = button.getAttribute('data-buy');
-      const paymentUrl = PAYMENT_LINKS[plan];
-      if (paymentUrl) {
-        button.href = paymentUrl;
-        button.target = '_blank';
-        button.rel = 'noopener';
+    function isExternalPaymentUrl(value) {
+      try {
+        const url = new URL(value);
+        return url.protocol === 'https:';
+      } catch {
+        return false;
       }
-    });
+    }
+
+    function applyPaymentLinks(paymentLinks) {
+      document.querySelectorAll('[data-buy]').forEach((button) => {
+        const plan = button.getAttribute('data-buy');
+        const paymentUrl = paymentLinks[plan];
+        if (paymentUrl && isExternalPaymentUrl(paymentUrl)) {
+          button.href = paymentUrl;
+          button.target = '_blank';
+          button.rel = 'noopener';
+        }
+      });
+    }
+
+    fetch('payment-links.json', { cache: 'no-store' })
+      .then((response) => response.ok ? response.json() : DEFAULT_PAYMENT_LINKS)
+      .then((paymentLinks) => applyPaymentLinks({ ...DEFAULT_PAYMENT_LINKS, ...paymentLinks }))
+      .catch(() => applyPaymentLinks(DEFAULT_PAYMENT_LINKS));
   </script>
 
 </body>
