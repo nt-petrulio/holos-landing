@@ -212,11 +212,24 @@
     .author-img-wrap {
       position: relative;
     }
-    .author-placeholder {
+    .author-photo {
       width: 100%; aspect-ratio: 3/4;
-      background: linear-gradient(135deg, #1A1A1A 0%, #222 100%);
+      position: relative;
+      overflow: hidden;
       border-radius: 20px;
       border: 1px solid rgba(201,168,76,0.2);
+      background: linear-gradient(135deg, #1A1A1A 0%, #222 100%);
+    }
+    .author-photo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .author-placeholder {
+      width: 100%; aspect-ratio: 3/4;
       display: flex; align-items: center; justify-content: center;
       font-size: 80px;
     }
@@ -476,7 +489,11 @@
   <div class="author-section">
     <div class="author-inner">
       <div class="author-img-wrap">
-        <div class="author-placeholder">🎭</div>
+        <div class="author-photo">
+          <!-- Add author-photo.jpg next to index.html to replace the fallback. -->
+          <img src="author-photo.jpg" alt="Авторка курсу ГОЛОС" onload="this.nextElementSibling.hidden = true" onerror="this.hidden = true">
+          <div class="author-placeholder">🎭</div>
+        </div>
         <div class="author-badge-float">
           Театральний<br>педагог<br>30+ років
         </div>
